@@ -1,44 +1,54 @@
-// Contact Form Validation
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent form submission
+// Get the canvas element and its context
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
 
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-    const errorMessageDiv = document.getElementById("error-message");
+// Set initial drawing state
+let painting = false;
+let currentColor = "#000000";
+let brushSize = 5;
 
-    // Clear any previous error messages
-    errorMessageDiv.textContent = "";
+// Function to start drawing
+function startPosition(e) {
+    painting = true;
+    draw(e);
+}
 
-    // Validate the form fields
-    if (!name || !email) {
-        errorMessageDiv.textContent = "Name and Email are required!";
-        return;
-    }
+// Function to stop drawing
+function endPosition() {
+    painting = false;
+    ctx.beginPath(); // Start a new path to prevent the lines from connecting
+}
 
-    // Validate email format using a regular expression
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailPattern.test(email)) {
-        errorMessageDiv.textContent = "Please enter a valid email address.";
-        return;
-    }
+// Function to draw on canvas
+function draw(e) {
+    if (!painting) return;
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = "round";
+    ctx.strokeStyle = currentColor;
 
-    // Success Message
-    errorMessageDiv.style.color = "green";
-    errorMessageDiv.textContent = "Thank you for reaching out! We will get back to you shortly.";
+    // Draw the line
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+}
+
+// Event listeners to handle mouse movements and clicks
+canvas.addEventListener("mousedown", startPosition);
+canvas.addEventListener("mouseup", endPosition);
+canvas.addEventListener("mousemove", draw);
+
+// Event listener for the color picker
+document.getElementById("colorPicker").addEventListener("input", (e) => {
+    currentColor = e.target.value;
 });
 
-// Dynamic To-Do List
-const addTaskButton = document.getElementById("add-task");
-const taskInput = document.getElementById("task-input");
-const tasksList = document.getElementById("tasks");
+// Event listener for the brush size slider
+document.getElementById("brushSize").addEventListener("input", (e) => {
+    brushSize = e.target.value;
+});
 
-addTaskButton.addEventListener("click", function() {
-    const taskText = taskInput.value.trim();
-
-    if (taskText !== "") {
-        const li = document.createElement("li");
-        li.textContent = taskText;
-
-        const removeBtn = document.createElement("button");
-       
+// Event listener for the clear canvas button
+document.getElementById("clearBtn").addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
+});

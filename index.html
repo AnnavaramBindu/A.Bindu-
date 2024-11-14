@@ -1,66 +1,146 @@
+[12:52 pm, 12/11/2024] Biñdu 😊: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall Painting Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .painting {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .painting:hover {
+            transform: scale(1.05);
+        }
+
+        .painting img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .painting:hover img {
+            transform: scale(1.1);
+        }
+
+        .description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .painting:hover .description {
+            opacity: 1;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Wall Painting Showcase</h1>
+        <p>Discover beautiful wall paintings from various artists.</p>
+    </header>
+
+    <section class="gallery">
+        <div class="painting">
+            <img src="https://cdn.shopify.com/s/files/1/0549/5806/3713/files/boho_mural_ideas_2.jpg?v=1716475986" alt="Painting 1">
+            <div class="description">
+                <h3>Abstract Art</h3>
+                <p>Artist: John Doe</p>
+            </div>
+        </div>
+
+        <div class="painting">
+            <img src="data:image/jpeg;base64,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" alt="Painting 2">
+            <div class="description">
+                <h3>Cityscape</h3>
+                <p>Artist: Jane Smith</p>
+            </div>
+        </div>
+
+        <div class="painting">
+            <img src="https://cdn.theatlantic.com/thumbor/Dm1_lAyMY_k9AJTQK5zZz_m5MYc=/819x0:1806x555/960x540/media/img/2017/09/BOB_Wulf_Walking-1/original.jpg" alt="Painting 3">
+            <div class="description">
+                <h3>Nature's Beauty</h3>
+                <p>Artist: Mark Lee</p>
+            </div>
+        </div>
+
+        <!-- Add more paintings here -->
+    </section>
+</body>
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bridal Wedding Dresses</title>
+    <title>Interactive Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Interactive Quiz</h1>
+    
+    <div id="What was this artist known for?">
+        <div id="Which technique is related to wall painting?">
+            <p id="What events were happening in the world at the time the piece was created?"></p>
+            <ul id="Diego Rivera"></ul>
+            <ul> id="Fresco"</ul> 
+            <ul> id="Diego Rivera’s Murals</ul>
+        </div>
+        
+        <button id="next-button">Next Question</button>
+    </div>
 
-    <!-- Navigation (Flexbox) -->
-    <header>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#collection">Bridal Collection</a>
-            <a href="#contact-form">Contact</a>
-            <a href="#todo-list">To-Do List</a>
-        </nav>
-    </header>
-
-    <!-- Main Content Section -->
-    <main>
-        <!-- Bridal Collection Section (CSS Grid) -->
-        <section id="collection" class="grid-container">
-            <h2>Our Bridal Wedding Dress Collection</h2>
-            <div class="grid">
-                <div class="grid-item"><img src="https://s.alicdn.com/@sc04/kf/HTB1xnIAasTxK1Rjy0Fgq6yovpXan.jpg_720x720q50.jpg" alt="Dress 1"><p>Elegant Lace Dress</p></div>
-                <div class="grid-item"><img src="https://i.pinimg.com/564x/27/7d/8c/277d8c142ed38884bd449bae6b17aa0d.jpg" alt="Dress 2"><p>Classic Ballgown</p></div>
-                <div class="grid-item"><img src="https://www.loveangeldress.com/cdn/shop/products/ruffles-one-shoulder-wedding-dress-with-thick-organza-skirt_large.jpg?v=1666867717" alt="Dress 3"><p>Romantic A-line</p></div>
-                <div class="grid-item"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlCxw1JC8cBvW0lsupLHV_C_Adild832n6WA&s" alt="Dress 4"><p>Modern Mermaid</p></div>
-            </div>
-        </section>
-
-        <!-- Contact Form Section -->
-        <section id="contact-form">
-            <h2>Contact Us</h2>
-            <form id="contact-form">
-                <label for="name">Your Name (Required)</label>
-                <input type="text" id="name" name="name" required placeholder="Enter your full name">
-                <label for="email">Your Email (Required)</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email address">
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" placeholder="Write your message here"></textarea>
-                <button type="submit">Submit</button>
-            </form>
-            <div id="error-message"></div>
-        </section>
-
-        <!-- Dynamic To-Do List -->
-        <section id="todo-list">
-            <h2>Manage Your Wedding Tasks</h2>
-            <ul id="tasks">
-                <!-- Dynamic tasks will appear here -->
-            </ul>
-            <input type="text" id="task-input" placeholder="Enter new task">
-            <button id="add-task">Add Task</button>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Bridal Wedding Dresses. All rights reserved.</p>
-    </footer>
+    <div id="result-container" style="display: none;">
+        <p id="result"></p>
+        <button id="retry-button">Retry</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
